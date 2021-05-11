@@ -11,7 +11,8 @@ export default {
     },
     created() {
         let that = this
-        that.websock = new window.WebSocket("ws://localhost:8064/connect");
+        // 443用wss , 80用ws , 懂的都懂
+        that.websock = new window.WebSocket("ws://localhost:8064/connect/random");
         // 连接建立时触发
         that.websock.onopen = (e) => {
             console.log('服务器连接成功')
@@ -29,9 +30,6 @@ export default {
         that.websock.onclose = (e) => {
             console.log('关闭连接')
         }
-    },
-    mounted() {
-
     }
 }
 </script>
